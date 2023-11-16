@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends "catalogue/base.html" %}
+
+{% block content %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="../../static/CSS/style_formulaire.CSS" rel="stylesheet" />
+    <title>Formulaire de supression de produit</title>
+</head>
+<body>
+    <!-- Partie qui est afficher si l'utilisateur est connecter.
+         Permet de supprimer un produit -->
+    {% if user.is_authenticated %}
+    <div class="formulaire">
+      <h1> Supprimer un produit</h1>
+      <form method="post" action="{% url 'supprimer_produit' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.errors }}
+          <p>
+            <select name="product_id" id="categorie" required>
+                <option value="" disabled selected>Choisir le produit</option>
+                {% for  produit in produits %}
+              <option value="{{ produit.id }}">{{ produit.nom }}</option>
+              {% endfor %}
+            </select><br>
+        </p>
+
+        <p>
+          
+        </p>
+
+
+
+        <p>
+          <input type="submit" value="Supprimer le produit" class="bouton">
+        </p>
+
+      </form>
+    </div>
+    {% endif %}
+
+    <!-- Message qui s'affiche si l'utilisateur n'est pas connecter-->
+    {% if not user.is_authenticated %}
+    <p> Oups... Vous avez frappé à la porte secrète, mais elle est actuellement verrouillée ! 🚪🔒 <br>
+        Il semblerait que vous ayez besoin de votre badge 'Connecté' pour accéder à cette partie de notre monde virtuel. <br>
+        À bientôt de l'autre côté, <br>
+        L'équipe Mercadona</p>
+
+    {% endif %}
+
+
+
+    
+
+
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

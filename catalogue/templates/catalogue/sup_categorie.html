@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "catalogue/base.html" %}
+
+{% block content %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de supression de categories </title>
+    <link href="../../static/CSS/style_formulaire.CSS" rel="stylesheet" />
+</head>
+<body>
+    <!-- Partie qui est afficher si l'utilisateur est connecter.
+         Permet de supprimer catégorie -->
+    {% if user.is_authenticated %}
+    <div class="formulaire">
+    <h1> Supprimer une catégorie</h1>  
+  
+    <form method="post" action="{% url 'supprimer_categorie' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.errors }}  
+        <p>
+          <select name="categorie_id" id="categorie" required>
+            <option value="" disabled selected>Choisir la catégorie</option>
+            {% for  categorie in categories %}
+            <option value="{{ categorie.id }}" > {{ categorie.nom }}</option>
+            {% endfor %}
+        </select><br>
+        </p>
+        <p>
+        <input type="submit" value="Supprimer la catègorie" class="bouton">
+        </p>
+
+    </form>
+</div>
+{% endif %}
+
+
+    <!-- message qui s'affiche si l'utilisateur n'est pas connecter-->
+    {% if not user.is_authenticated %}
+    <p> Oups... Vous avez frappé à la porte secrète, mais elle est actuellement verrouillée ! 🚪🔒 <br>
+        Il semblerait que vous ayez besoin de votre badge 'Connecté' pour accéder à cette partie de notre monde virtuel. <br>
+        À bientôt de l'autre côté, <br>
+        L'équipe Mercadona</p>
+
+    {% endif %}
+
+
+
+    
+
+
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "catalogue/base.html" %}
+<!DOCTYPE html>
+<html lang="fr">
+    {% block content %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de création de promotion</title>
+    <link href="../../static/CSS/style_formulaire.CSS" rel="stylesheet" />
+</head>
+<body>
+    <!-- Partie qui est afficher si l'utilisateur est connecter.
+         Permet de créer une promotion sur un produit -->
+    {% if user.is_authenticated %}
+    <div class="formulaire">
+        
+        <form method="post" action="" enctype="multipart/form-data">
+           {% csrf_token %}
+        
+            {% if form.errors %}
+                {{ form.get_global_error }}
+            {% endif %}
+
+        
+            <h1>Ajouter une promotion</h1>
+        
+            <p>
+                <input type="text" name="produit" id="produit" required readonly value="{{ produit.id }}" hidden> <br>
+            </p>
+            <p>    
+                <label for="date_debut">Date de début :</label>
+                <input type="date" name="date_debut" id="date_debut" required ><br>
+            </p>
+            <p> 
+                <label for="date_fin"> Date de fin :</label>
+                <input type="date" name="date_fin" id="date_fin" required><br>
+            </p>
+            <p> 
+                <input type="number" name="pourcentage_promo" id="pourcentage_promo" required max="100" placeholder="Pourcentage de promotion"><br>
+            </p>
+            <p> 
+                <input type="submit" value="Ajouter la promotion" class="bouton">
+            </p>
+        </form>
+    </div>
+        {% endif %}
+    
+        <!-- Message qui s'affiche si l'utilisateur n'est pas connecter-->
+    {% if not user.is_authenticated %}
+    <p> Oups... Vous avez frappé à la porte secrète, mais elle est actuellement verrouillée ! 🚪🔒 <br>
+        Il semblerait que vous ayez besoin de votre badge 'Connecté' pour accéder à cette partie de notre monde virtuel. <br>
+        À bientôt de l'autre côté, <br>
+        L'équipe Mercadona</p>
+
+    {% endif %}
+
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

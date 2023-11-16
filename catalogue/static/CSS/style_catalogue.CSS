@@ -1,0 +1,153 @@
+
+/*General */
+
+body{
+    font-family: sans-serif;
+    color: black;
+}
+
+/*   Permet de gérer le style de la page catalogue  */
+
+.produit{
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.cartes-container{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+.card{
+    color: black;
+    margin: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 20em;
+    min-width: 20em;
+
+    border-bottom-left-radius : 10px;
+    border-bottom-right-radius : 10px;
+    border-top-left-radius : 10px;
+    border-top-right-radius : 10px;  
+
+
+}
+
+.badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    background: red;
+    color: #fff;
+    padding: 3px 10px;
+}
+
+.fond-image {
+    overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*height: 300px;*/
+
+    max-width: 20em;
+    max-height: 20em;
+    
+    /*padding: 50px;*/
+    background: #f0f0f0;
+
+    
+    border-top-left-radius : 10px;
+    border-top-right-radius : 10px;
+}
+
+
+.card-image-top {
+  margin: 0.5em;  
+  object-fit: cover;
+  min-height: 15em;
+  min-width: 15em;
+  max-width: 15em;
+  max-height: 15em;
+  
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-nom {
+    text-align: center;
+    font-weight: bolder;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #f0f0f0;
+}
+
+
+.card-prix{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prix-promo{
+    text-decoration: line-through;
+    
+}
+
+.card-description{
+    
+    text-align: justify;
+    
+    border-top: 2px;
+    border-top-style: solid;
+    border-top-color: #f0f0f0;
+
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #f0f0f0;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+
+
+.nouveaux-prix {
+    color: red;
+    font-weight: 1000;
+
+    
+
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: normal;
+}
+
+.bouton_promo {
+    
+    background-color: #095228;
+    color: white;
+    text-align: center;
+    border: none;
+    
+    margin-top: 0.5em;
+    border-bottom-left-radius : 10px;
+    border-bottom-right-radius : 10px;
+    border-top-left-radius : 10px;
+    border-top-right-radius : 10px;
+}
+
+.form_bouton_promotion{
+    text-align: center;
+}
+

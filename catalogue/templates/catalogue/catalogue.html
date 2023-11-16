@@ -1,0 +1,79 @@
+
+{% extends "catalogue/base.html" %}
+
+{% block content %} 
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/CSS/style_catalogue.CSS" rel="stylesheet" />
+    <title>Catalogue</title>
+</head>
+
+<body>
+     
+    <div class="produit">
+        <div class="cartes-container">
+        <!-- créer une carte pour chaque produit créer et les affiche sur une page-->
+        {% for  produit in produit_objet %} 
+        <div class="card">
+            
+            <!-- affiche le badge -x% si le produit est en promotion-->
+            {% for promotion in produit.promotions.all %}
+            {% if promotion.est_activee and not promotion.est_expiree %}
+                <div class="badge"> - {{ promotion.pourcentage_promo }} %</div>
+            {% endif %}
+            {% endfor %}
+            
+            <!-- affiche les information de base du produit-->
+            <div class="fond-image">
+                <img src="{{ produit.image.url }}" alt=" l'image du produit n'est pas disponible " class="card-image-top">
+            </div>
+            <div class="card-body">
+                <div class="card-nom"> {{ produit.nom }}</div>
+                <div class="card-prix">
+                    {% if not produit.est_en_promotion %}
+                        <div class="prix"> {{ produit.prix }} €</div>
+                    {% endif %}
+
+                    <!-- permet d'afficher les informations des promotions-->
+                    {%for promotion in produit.promotions.all %}
+                    {% if promotion.est_activee and not promotion.est_expiree %}
+                    <div class="prix-promo"> {{ produit.prix }} €</div>
+                    <div class= "nouveaux-prix"> {{ promotion.prix_promo |floatformat:2 }} €</div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                
+                <div class="card-description"> {{ produit.description }}</div> 
+
+                <!-- permet d'afficher les informations des promotions-->
+                {%for promotion in produit.promotions.all %}
+                {% if promotion.est_activee and not promotion.est_expiree %}
+                <div class="date-debut-promo"> du {{ promotion.date_debut }} </div>
+                <div class="date-fin-promo"> au {{ promotion.date_fin }}</div>
+                <a> profiter de -{{ promotion.pourcentage_promo}} %</a>
+                {% endif %}
+                {% endfor %}
+
+                <!-- affiche le bouton pour ajouter une promotion que si l'utilisateur est connecter-->
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'ajouter_promo' produit.id %}" class="form_bouton_promotion">
+                    {% csrf_token %}
+                    <button class="bouton_promo" type="submit">Ajouter une promotion </button>
+                </form>
+                {% endif %}
+        
+            </div>
+
+        </div>
+        {% endfor %}         
+       
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
+

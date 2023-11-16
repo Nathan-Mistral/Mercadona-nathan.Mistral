@@ -1,0 +1,99 @@
+
+/*General */
+
+
+body{
+    font-family: sans-serif;
+    color: black;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    
+}
+
+
+/* permet de gérer tout le style des formulaires */
+
+
+.formulaire{
+    
+    margin-top: 2em;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 20px;
+    width: 320px; 
+    margin-left: auto; 
+    margin-right: auto;
+       
+}
+
+h1 {
+    color: black;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+p{
+    text-align: center;
+}
+
+
+
+input,label, option, select{
+    border-radius: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    text-align: center;
+    min-width: 195px;
+    max-width: 195px;
+    color: #888888;
+    
+}
+
+input[type="file"]{
+    display: none;
+}
+
+#categorie option:first-child{
+    color: #888888
+}
+
+#description{
+    border-radius: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    min-width: 195px;
+
+    resize: none;
+    width: 2em;
+    height: 4em;
+    text-align: center;
+
+}
+
+.contenaire_description{
+    display: flex;
+    justify-content: center;
+        align-items: center;
+}
+
+
+
+.bouton{
+    background-color: #095228;
+    border: none;
+    color: white;
+
+    border-radius: 10px;
+   
+}
+
+
+
+
+
